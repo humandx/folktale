@@ -124,7 +124,7 @@ Deferred.prototype = {
   listen(pattern) {
     this._state.matchWith({
       Pending:   _            => this._listeners.push(pattern),
-      Cancelled: _            => pattern.onCancelled(), 
+      Cancelled: _            => pattern.onCancelled(),
       Resolved:  ({ value })  => pattern.onResolved(value),
       Rejected:  ({ reason }) => pattern.onRejected(reason)
     });
@@ -142,7 +142,7 @@ Deferred.prototype = {
       this.listen({
         onCancelled: _ => reject(Cancelled()),
         onResolved: resolve,
-        onRejected: reject 
+        onRejected: reject
       });
     });
   },
@@ -156,7 +156,7 @@ Deferred.prototype = {
     this.listen({
       onCancelled: _      => moveToState(future, Cancelled()),
       onRejected:  reason => moveToState(future, Rejected(reason)),
-      onResolved:  value  => moveToState(future, Resolved(value)) 
+      onResolved:  value  => moveToState(future, Resolved(value))
     });
 
     return future;
@@ -182,7 +182,8 @@ Deferred.prototype = {
     return this.toString();
   },
 
-  [Symbol.toStringTag]: 'folktale:Deferred'  
+    // Commented out to ensure android compatibility
+  // [Symbol.toStringTag]: 'folktale:Deferred'
 };
 
 

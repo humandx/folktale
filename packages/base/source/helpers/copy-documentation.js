@@ -7,7 +7,7 @@
 //
 //----------------------------------------------------------------------
 
-const mm = Symbol.for('@@meta:magical');
+const mm = '@@meta:magical';
 
 const copyDocumentation = (source, target, extensions = {}) => {
   if (process.env.FOLKTALE_DOCS !== 'false') {

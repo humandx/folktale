@@ -13,9 +13,9 @@ const extend = require('folktale/helpers/extend');
 
 
 // --[ Constants and Aliases ]------------------------------------------
-const TYPE = Symbol.for('@@folktale:adt:type');
-const TAG  = Symbol.for('@@folktale:adt:tag');
-const META = Symbol.for('@@meta:magical');
+const TYPE = '@@folktale:adt:type';
+const TAG  = '@@folktale:adt:tag';
+const META = '@@meta:magical';
 
 const keys = Object.keys;
 
@@ -73,7 +73,7 @@ function defineVariants(typeId, patterns, adt) {
 instead to check if a value belongs to the ADT variant.`);
         return true;
       },
-      
+
       /*~
        * ~belongsTo: constructor
        * module: null
@@ -83,7 +83,7 @@ instead to check if a value belongs to the ADT variant.`);
        */
       matchWith(pattern) {
         return pattern[name](this);
-      } 
+      }
     });
 
     function makeInstance(...args) {
@@ -97,24 +97,24 @@ instead to check if a value belongs to the ADT variant.`);
       // wrapper, which is what the user will interact with most of the time.
       [META]: constructor[META],
 
-      /*~ 
-       * ~belongsTo: makeInstance 
+      /*~
+       * ~belongsTo: makeInstance
        * module: null
        */
       get tag() {
         return name;
       },
 
-      /*~ 
-       * ~belongsTo: makeInstance 
+      /*~
+       * ~belongsTo: makeInstance
        * module: null
        */
       get type() {
         return typeId;
       },
 
-      /*~ 
-       * ~belongsTo: makeInstance 
+      /*~
+       * ~belongsTo: makeInstance
        * module: null
        */
       get constructor() {
@@ -131,8 +131,8 @@ instead to check if a value belongs to the ADT variant.`);
        *   (Variant) => Boolean
        */
       hasInstance(value) {
-        return Boolean(value) 
-        &&     adt.hasInstance(value) 
+        return Boolean(value)
+        &&     adt.hasInstance(value)
         &&     value[TAG] === name;
       },
     });
@@ -149,7 +149,7 @@ instead to check if a value belongs to the ADT variant.`);
 /*~
  * authors:
  *   - Quildreen Motta
- * 
+ *
  * stability: experimental
  * type: |
  *   (String, Object (Array String)) => Union

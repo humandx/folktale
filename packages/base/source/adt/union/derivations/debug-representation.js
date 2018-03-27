@@ -81,7 +81,7 @@ const showValue = (value) =>
  * stability: experimental
  * authors:
  *   - "@boris-marinov"
- * 
+ *
  * type: |
  *   (Variant, Union) => Void
  */
@@ -90,8 +90,9 @@ const debugRepresentation = (variant, adt) => {  // eslint-disable-line max-stat
   const variantName = `${adt[typeSymbol]}.${variant.prototype[tagSymbol]}`;
 
   // (for Object.prototype.toString)
-  adt[Symbol.toStringTag]               = typeName;
-  variant.prototype[Symbol.toStringTag] = variantName;
+    // commented out, since not compatible with android.
+  // adt[Symbol.toStringTag]               = typeName;
+  // variant.prototype[Symbol.toStringTag] = variantName;
 
   // (regular JavaScript representations)
   /*~
@@ -99,7 +100,7 @@ const debugRepresentation = (variant, adt) => {  // eslint-disable-line max-stat
    * module: null
    * authors:
    *   - "@boris-marinov"
-   * 
+   *
    * type: |
    *   () => String
    */
@@ -110,7 +111,7 @@ const debugRepresentation = (variant, adt) => {  // eslint-disable-line max-stat
    * mmodule: null
    * authors:
    *   - "@boris-marinov"
-   * 
+   *
    * type: |
    *   () => String
    */
@@ -121,7 +122,7 @@ const debugRepresentation = (variant, adt) => {  // eslint-disable-line max-stat
    * module: null
    * authors:
    *   - "@boris-marinov"
-   * 
+   *
    * type: |
    *   (Union).() => String
    */
